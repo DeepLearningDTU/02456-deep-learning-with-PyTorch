@@ -23,15 +23,11 @@ First you need to [install Docker](https://docs.docker.com/install/).
 
 Setup Docker by typing this in the command line in the exercise folder (this one)
 
-* ```
-docker build -t munkai/pytorch:cpu -f Dockerfile.cpu .
-```
+* ```docker build -t munkai/pytorch:cpu -f Dockerfile.cpu .```
 
 Start Docker container
 
-* ```
-docker run -it -p 8888:8888 -v `pwd`:/work munkai/pytorch:cpu ./jupyter_run.sh
-```
+* ```docker run -it -p 8888:8888 -v `pwd`:/work munkai/pytorch:cpu ./jupyter_run.sh```
 
 Go to your browser, and type in `http://localhost:8888`. It will ask for a password (token) that you can copy from your terminal.
 
@@ -43,8 +39,7 @@ Make sure you have Nvidia's drivers installed for your system.
 The folowing instructions will install CUDA and NVIDA drivers on ubuntu 16.04.
 Adjust as appropriate.
 
-* ```
-DISTRO=ubuntu
+* ```DISTRO=ubuntu
 VERSION=1604
 ARCH=x86_64
 sudo apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/${DISTRO}${VERSION}/${ARCH}/7fa2af80.pub
@@ -56,14 +51,12 @@ Install nvidia-docker: See https://github.com/NVIDIA/nvidia-docker on how to ins
 
 Setup Docker with GPU by typing this in the command line in the exercise folder (this one)
 
-* ```
-docker build -t munkai/pytorch:gpu -f Dockerfile.gpu .
+* ```docker build -t munkai/pytorch:gpu -f Dockerfile.gpu .
 ```
 
 Running docker with a CUDA-enabled machine
 
-* ```
-nvidia-docker run -it -p 8888:8888 -v `pwd`:/work munkai/pytorch:gpu ./jupyter_run.sh
+* ```nvidia-docker run -it -p 8888:8888 -v `pwd`:/work munkai/pytorch:gpu ./jupyter_run.sh
 ```
 
 Go to your browser, and type in `http://localhost:8888`. It will ask for a password (token) that you can copy from your terminal.
@@ -74,13 +67,11 @@ The following instructions will help you setup Docker on Windows.
 1. Install [install Docker](https://docs.docker.com/install/)
 1. Make drive shareable - complete steps 1-3 in [this guide](https://rominirani.com/docker-on-windows-mounting-host-directories-d96f3f056a2c)
 1. Setup Docker by typing this in the command line in the exercise folder (this one)
-  * ```
-docker build -t munkai/pytorch:cpu -f Dockerfile.cpu .
+  * ```docker build -t munkai/pytorch:cpu -f Dockerfile.cpu .
 ```
 1. Make sure that `jupyter_run.sh` has Unix style line endings (git has probaly made it Windos style when you downloaded. Text editors like Sublime can change that).
 1. Run Docker (change command to match your setup)
-  * ```
-docker run -v c:/PATH/TO/EXERCISES/02456-deep-learning-with-PyTorch:/work -it --rm -p 8888:8888 munkai/pytorch:cpu ./jupyter_run.sh
+  * ```docker run -v c:/PATH/TO/EXERCISES/02456-deep-learning-with-PyTorch:/work -it --rm -p 8888:8888 munkai/pytorch:cpu ./jupyter_run.sh
 ```
 1. Go to your browser, and type in `http://localhost:8888`. It will ask for a password (token) that you can copy from your terminal.
 
@@ -96,8 +87,7 @@ Plase help us extend this list and help people in the future by letting us know 
 * Jupyter starts, but you don't see the exercises.
   * The drive isn't shared properly. Take a look at [this guide](https://rominirani.com/docker-on-windows-mounting-host-directories-d96f3f056a2c) again, or [this Stack Overflow question](https://stackoverflow.com/questions/23439126/how-to-mount-a-host-directory-in-a-docker-container).
 
-* ```
-standard_init_linux.go:190: exec user process caused "no such file or directory"
+* ```standard_init_linux.go:190: exec user process caused "no such file or directory"
 ```
   * https://github.com/docker/labs/issues/215
 
