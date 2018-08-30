@@ -39,7 +39,8 @@ Make sure you have Nvidia's drivers installed for your system.
 The folowing instructions will install CUDA and NVIDA drivers on ubuntu 16.04.
 Adjust as appropriate.
 
-* ```DISTRO=ubuntu
+```
+DISTRO=ubuntu
 VERSION=1604
 ARCH=x86_64
 sudo apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/${DISTRO}${VERSION}/${ARCH}/7fa2af80.pub
