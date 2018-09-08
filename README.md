@@ -93,3 +93,15 @@ We haven't tested this, but it should be easy to combine the *GPU (Linux & mac)*
 Let us know if this works/doesn't work for you.
 
 
+## 7. Additional content
+
+If you're interested in some PyTorch codebases check out the following links (reinforcement learning, GANTs, ResNet, etc).
+
+- [Train neural nets to play video games](http://pytorch.org/tutorials/intermediate/reinforcement_q_learning.html)
+- [Train a state-of-the-art ResNet network on imagenet](https://github.com/pytorch/examples/tree/master/imagenet)
+- [Train a face generator using Generative Adversarial Networks](https://github.com/pytorch/examples/tree/master/dcgan)
+- [Train a word-level language model using Recurrent LSTM networks](https://github.com/pytorch/examples/tree/master/word_language_model)
+- [More examples](https://github.com/pytorch/examples)
+- [More tutorials](https://github.com/pytorch/tutorials)
+- [Discuss PyTorch on the Forums](https://discuss.pytorch.org/)
+- [Chat with other users on Slack](http://pytorch.slack.com/messages/beginner/)
