@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import os
 
+from PIL import Image, ImageOps
 from skimage.io import imread
 from skimage.transform import resize
 from sklearn.preprocessing import LabelEncoder
@@ -17,6 +18,16 @@ def onehot(t, num_classes):
     for row, col in enumerate(t):
         out[int(row), int(col)] = 1
     return out
+
+def pad2square(img):
+    img_shape = img.shape
+    r = img_shape[0]
+    c = img_shape[1]
+    new_side = np.max([r,c])
+    padding = ((new_side - c)//2, (new_side - r)//2, int(np.ceil((new_side - c)/2)), int(np.ceil((new_side - r)/2)))
+    img_as_img = Image.fromarray(img)
+    new_img = ImageOps.expand(img_as_img, padding)
+    return np.array(new_img)
 
 class load_data():
     # data_train, data_test and le are public
@@ -38,7 +49,9 @@ class load_data():
         # labels for train
         t_train = self.le.transform(train_image_df['species'])
         # getting data
+        print("Loading training data")
         train_data = self._make_dataset(train_image_df, image_shape, t_train)
+        print("Loading test data")
         test_data = self._make_dataset(test_image_df, image_shape)        
         # need to reformat the train for validation split reasons in the batch_generator
         self.train = self._format_dataset(train_data, for_train=True)
@@ -77,6 +90,7 @@ class load_data():
             if t_train is not None:
                 sample['t'] = np.asarray(t_train[i], dtype='int32')
             image = imread(row['image'], as_grey=True)
+            image = pad2square(image)
             image = resize(image, output_shape=image_shape)
             image = np.expand_dims(image, axis=2)
             sample['image'] = image   
