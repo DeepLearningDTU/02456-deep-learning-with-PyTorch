@@ -178,6 +178,11 @@ class batch_generator():
                 batch = self._batch_init(purpose='valid')
                 i = 0
         if i != 0:
+            batch['ts'] = batch['ts'][:i]
+            batch['margins'] = batch['margins'][:i]
+            batch['shapes'] = batch['shapes'][:i]
+            batch['textures'] = batch['textures'][:i]
+            batch['images'] = batch['images'][:i]
             yield batch, i
 
     def gen_test(self):
