@@ -1,4 +1,4 @@
-FROM conda/miniconda3
+FROM continuumio/miniconda3
 
 ENV LANG=C.UTF-8 \
     LC_ALL=C.UTF-8
