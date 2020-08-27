@@ -1,4 +1,4 @@
-# 02456-deep-learning-with-PyTorch
+# 02456 Deep Learning (with PyTorch)
 
 This repository contains exercises for the DTU course [02456 Deep Learning](https://kurser.dtu.dk/course/02456). All exercises are written in the [Python](https://www.python.org/) programming language and formatted into [Jupyter Notebooks](https://jupyter.org/). If you're unfamiliar with notebooks, it can be a good idea to familiarize yourself with them in advance.
 
