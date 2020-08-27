@@ -1,6 +1,6 @@
 # 02456-deep-learning-with-PyTorch
 
-This repository contains exercises for the DTU course 02456 Deep Learning. The exercises are written in Python programming language and formatted into Jupyter Notebooks.
+This repository contains exercises for the DTU course [02456 Deep Learning](https://kurser.dtu.dk/course/02456). All exercises are written in the [Python](https://www.python.org/) programming language and formatted into [Jupyter Notebooks](https://jupyter.org/). If you're unfamiliar with notebooks, it can be a good idea to familiarize yourself with them in advance.
 
 This repository borrows heavily from previous works, in particular:
 
@@ -13,9 +13,11 @@ This repository borrows heavily from previous works, in particular:
 * [pytorch/tutorials](https://github.com/pytorch/tutorials). Official tutorials from the PyTorch repo.
 
 ## Setup
-We will use Docker to manage the software needed for the exercises.
-* **NB:** If you have a **NVIDIA GPU** you should follow the GPU instructions below, as a GPU enables you to run the exercises considerably faster.
-* **NB:** If you are using **Windows** things are a bit more difficult. We will help you the best we can, but be prepared to do some resaerch on your own.
+The **recommended** (and by far the easiest) way to get started with the exercises is by using [Google Colab](https://colab.research.google.com/notebooks/intro.ipynb). It allows you to work with Jupyter Notebooks in the cloud with all dependencies pre-installed, and Colab offers GPU utility for free which allwos you to run the exercises considerably faster.
+
+If you prefer to work locally, we here provide installation guides for Linux and Mac using Docker.
+* **NB:** If you have an **NVIDIA GPU** you should follow the GPU instructions below, since working on a GPU rather than CPU will accelerate things substantially.
+* **NB:** If you are using **Windows** working locally is a bit more difficult. We will help you the best we can, but be prepared to do some resaerch on your own.
 
 
 ### CPU (Linux & mac)
@@ -95,12 +97,13 @@ Let us know if this works/doesn't work for you.
 
 ## 7. Additional content
 
-If you're interested in some PyTorch codebases check out the following links (reinforcement learning, GANTs, ResNet, etc).
+If you're interested in some PyTorch codebases check out the following links (reinforcement learning, GANs, ResNet, etc).
 
 - [Train neural nets to play video games](http://pytorch.org/tutorials/intermediate/reinforcement_q_learning.html)
 - [Train a state-of-the-art ResNet network on imagenet](https://github.com/pytorch/examples/tree/master/imagenet)
 - [Train a face generator using Generative Adversarial Networks](https://github.com/pytorch/examples/tree/master/dcgan)
 - [Train a word-level language model using Recurrent LSTM networks](https://github.com/pytorch/examples/tree/master/word_language_model)
+- [Spinning up: Deep Reinforcement Learning](https://spinningup.openai.com/en/latest/)
 - [More examples](https://github.com/pytorch/examples)
 - [More tutorials](https://github.com/pytorch/tutorials)
 - [Discuss PyTorch on the Forums](https://discuss.pytorch.org/)
