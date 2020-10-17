@@ -105,27 +105,32 @@ def plot_samples(ax, x):
 
 
 def plot_interpolations(ax, vae):
+    device = next(iter(vae.parameters())).device
     nrow = 10
     nsteps = 10
     prior_params = vae.prior_params.expand(2 * nrow, *vae.prior_params.shape[-1:])
     mu, log_sigma = prior_params.chunk(2, dim=-1)
     pz = Normal(mu, log_sigma.exp())
-    z = pz.sample().view(nrow, 2, -1).cpu()
-    t = torch.linspace(0, 1, 10)
+    z = pz.sample().view(nrow, 2, -1)
+    t = torch.linspace(0, 1, 10, device=device)
     zs = t[None, :, None] * z[:, 0, None, :] + (1 - t[None, :, None]) * z[:, 1, None, :]
     px = vae.observation_model(zs.view(nrow * nsteps, -1))
-    x = px.sample().cpu()
+    x = px.sample()
+    x = x.to('cpu')
     x_grid = make_grid(x.view(-1, 1, 28, 28), nrow=nrow).permute(1, 2, 0)
     ax.imshow(x_grid)
     ax.axis('off')
 
 
 def plot_grid(ax, vae):
+    device = next(iter(vae.parameters())).device
     nrow = 10
     xv, yv = torch.meshgrid([torch.linspace(-3, 3, 10), torch.linspace(-3, 3, 10)])
     zs = torch.cat([xv[:, :, None], yv[:, :, None]], -1)
+    zs = zs.to(device)
     px = vae.observation_model(zs.view(nrow * nrow, 2))
-    x = px.sample().cpu()
+    x = px.sample()
+    x = x.to('cpu')
     x_grid = make_grid(x.view(-1, 1, 28, 28), nrow=nrow).permute(1, 2, 0)
     ax.imshow(x_grid)
     ax.axis('off')
@@ -133,7 +138,7 @@ def plot_grid(ax, vae):
 
 def plot_2d_latents(ax, qz, z, y):
     z = z.to('cpu')
-    y = y.yo('cpu')
+    y = y.to('cpu')
     scale_factor = 2
     batch_size = z.shape[0]
     palette = sns.color_palette()
