@@ -7,6 +7,8 @@ ENV LANG=C.UTF-8 \
     LC_ALL=C.UTF-8 \
     PATH=$CONDA_DIR/bin:$PATH
 
+RUN apt-key adv --fetch-keys "http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/3bf863cc.pub"
+
 RUN apt-get update -y && \
 		apt-get install -y --no-install-recommends \
 			git \

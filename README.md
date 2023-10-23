@@ -45,7 +45,7 @@ Adjust as appropriate.
 DISTRO=ubuntu
 VERSION=1604
 ARCH=x86_64
-sudo apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/${DISTRO}${VERSION}/${ARCH}/7fa2af80.pub
+sudo apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/${DISTRO}${VERSION}/${ARCH}/3bf863cc.pub
 sudo sh -c 'echo "deb http://developer.download.nvidia.com/compute/cuda/repos/${DISTRO}${VERSION}/${ARCH}/" > /etc/apt/sources.list.d/cuda.list'
 sudo apt-get update && sudo apt-get install -y --no-install-recommends cuda-drivers
 ```
