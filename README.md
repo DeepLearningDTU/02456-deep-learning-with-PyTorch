@@ -13,98 +13,16 @@ This repository borrows heavily from previous works, in particular:
 * [pytorch/tutorials](https://github.com/pytorch/tutorials). Official tutorials from the PyTorch repo.
 
 ## Setup
-The **recommended** (and by far the easiest) way to get started with the exercises is by using [Google Colab](https://colab.research.google.com/notebooks/intro.ipynb). It allows you to work with Jupyter Notebooks in the cloud with all dependencies pre-installed, and Colab offers GPU utility for free which allows you to run the exercises considerably faster.
+The **recommended** (and by far the easiest) way to get started with the exercises is by using [Google Colab](https://colab.research.google.com/notebooks/intro.ipynb). It allows you to work with Jupyter Notebooks in the cloud with all pre-installed dependencies, and Colab offers free GPU access, enabling you to run the exercises considerably faster. Also, all exercises have been tested on Colab.
 
-If you prefer to work locally, we here provide installation guides for Linux and Mac using Docker.
-* **NB:** If you have an **Nvidia GPU** you should follow the GPU instructions below, since working on a GPU rather than CPU will accelerate things substantially.
-* **NB:** If you are using **Windows** working locally is a bit more difficult. We will help you the best we can, but be prepared to do some research on your own.
+If you prefer to work locally, we recommend using either [Anaconda](https://www.anaconda.com) (for both Linux, Mac, and Windows). On Linux, you can use the system Python, and on Mac, you can also use a newer version of Python through [Homebrew](https://brew.sh).
 
+To run on the [DTU HPC](https://www.hpc.dtu.dk), please see the guide on the course homepage.
 
-### CPU (Linux & mac)
-First you need to [install Docker](https://docs.docker.com/install/).
+## Additional content
 
-Setup Docker by typing this in the command line in the exercise folder (this one)
+If you are interested in some PyTorch code bases check out the following links:
 
-* ```docker build -t munkai/pytorch:cpu -f Dockerfile.cpu .```
-
-Start Docker container
-
-* ```docker run -it -p 8888:8888 -v `pwd`:/work munkai/pytorch:cpu ./jupyter_run.sh```
-
-Go to your browser, and type in `http://localhost:8888`. It will ask for a password (token) that you can copy from your terminal.
-
-### GPU (Linux & mac)
-Setting up your GPU may take a while, and you might need to consult your favorite search engine.
-You need Nvidia and nvidia-docker installed for this.
-
-Make sure you have Nvidia's drivers installed for your system.
-The following instructions will install CUDA and Nvida drivers on Ubuntu 16.04.
-Adjust as appropriate.
-
-```
-DISTRO=ubuntu
-VERSION=1604
-ARCH=x86_64
-sudo apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/${DISTRO}${VERSION}/${ARCH}/7fa2af80.pub
-sudo sh -c 'echo "deb http://developer.download.nvidia.com/compute/cuda/repos/${DISTRO}${VERSION}/${ARCH}/" > /etc/apt/sources.list.d/cuda.list'
-sudo apt-get update && sudo apt-get install -y --no-install-recommends cuda-drivers
-```
-
-Install nvidia-docker: See https://github.com/NVIDIA/nvidia-docker on how to install `nvidia-docker`.
-
-Setup Docker with GPU by typing this in the command line in the exercise folder (this one)
-
-* ```docker build -t munkai/pytorch:gpu -f Dockerfile.gpu .```
-
-Running docker with a CUDA-enabled machine
-
-* ```nvidia-docker run -it -p 8888:8888 -v `pwd`:/work munkai/pytorch:gpu ./jupyter_run.sh```
-
-Go to your browser, and type in `http://localhost:8888`. It will ask for a password (token) that you can copy from your terminal.
-
-### CPU (Windows)
-The following instructions will help you setup Docker on Windows. 
-
-1. Install [install Docker](https://docs.docker.com/install/)
-1. Make drive shareable - complete steps 1-3 in [this guide](https://rominirani.com/docker-on-windows-mounting-host-directories-d96f3f056a2c)
-1. Setup Docker by typing this in the command line in the exercise folder (this one)
- 1. ```docker build -t munkai/pytorch:cpu -f Dockerfile.cpu .```
-1. Make sure that `jupyter_run.sh` has Unix style line endings (git has probably made it Windows style when you downloaded. Text editors like Sublime can change that).
-1. Run Docker (change command to match your setup)
- 1. ```docker run -v c:/PATH/TO/EXERCISES/02456-deep-learning-with-PyTorch:/work -it --rm -p 8888:8888 munkai/pytorch:cpu ./jupyter_run.sh```
-1. Go to your browser, and type in `http://localhost:8888`. It will ask for a password (token) that you can copy from your terminal.
-
-And you are done! 
-Once setup is complete you only need to perform the last 2 steps to get up and running.
-
-
-**Debugging**
-
-If you are having issues we have made a list of problems and solutions to help you.
-Please help us extend this list and help people in the future by letting us know about you issues and the solutions you found.
-
-* Jupyter starts, but you don't see the exercises.
-  * The drive isn't shared properly. Take a look at [this guide](https://rominirani.com/docker-on-windows-mounting-host-directories-d96f3f056a2c) again, or [this Stack Overflow question](https://stackoverflow.com/questions/23439126/how-to-mount-a-host-directory-in-a-docker-container).
-
-* ```standard_init_linux.go:190: exec user process caused "no such file or directory"```
-  * https://github.com/docker/labs/issues/215
-
-
-### GPU (Windows)
-We haven't tested this, but it should be easy to combine the *GPU (Linux & mac)* and *CPU (Windows)* guides above.
-Let us know if this works/doesn't work for you.
-
-
-## 7. Additional content
-
-If you are interested in some PyTorch code bases check out the following links (reinforcement learning, GANs, ResNet, etc).
-
-- [Train neural nets to play video games](http://pytorch.org/tutorials/intermediate/reinforcement_q_learning.html)
-- [Train a state-of-the-art ResNet network on imagenet](https://github.com/pytorch/examples/tree/master/imagenet)
-- [Train a face generator using Generative Adversarial Networks](https://github.com/pytorch/examples/tree/master/dcgan)
-- [Train a word-level language model using Recurrent LSTM networks](https://github.com/pytorch/examples/tree/master/word_language_model)
-- [Spinning up: Deep Reinforcement Learning](https://spinningup.openai.com/en/latest/)
-- [More examples](https://github.com/pytorch/examples)
-- [More tutorials](https://github.com/pytorch/tutorials)
+- [PyTorch examples](https://github.com/pytorch/examples)
+- [PyTorch tutorials](https://github.com/pytorch/tutorials)
 - [Discuss PyTorch on the Forums](https://discuss.pytorch.org/)
-- [Chat with other users on Slack](http://pytorch.slack.com/messages/beginner/)
